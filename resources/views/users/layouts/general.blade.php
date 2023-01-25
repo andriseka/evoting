@@ -13,7 +13,7 @@
 	<meta property="og:title" content=" Admin Dashboard">
 	<meta property="og:description" content=" Admin Dashboard">
 	<meta name="format-detection" content="telephone=no">
-    <title>Admin Dashboard </title>
+    <title>User Dashboard </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link href="{{asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
@@ -41,8 +41,8 @@
     ***********************************-->
     <div id="main-wrapper">
 
-        @include('layouts.header')
-        @include('layouts.sidebar')
+        @include('users.layouts.header')
+        @include('users.layouts.sidebar')
 
         <div class="content-body">
 			<div class="container-fluid">
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 
-        @include('layouts.footer')
+        @include('users.layouts.footer')
 
 
     </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RegisterCandidateController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +19,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::prefix('/dashboard')->middleware(['auth'])->group(function() {
+// Route user
+Route::prefix('/users')->middleware(['checkRole:user'])->group(function() {
+    Route::get('/', [HomeController::class, 'index']);
+});
+
+
+// Route admin
+Route::prefix('/dashboard')->middleware(['checkRole:admin'])->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
